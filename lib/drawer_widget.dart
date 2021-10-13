@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-Widget drawerWidget() {
+Widget drawerWidget(context) {
   return Drawer(
     child: ListView(
       children: <Widget>[
@@ -20,25 +20,33 @@ Widget drawerWidget() {
           trailing: Icon(Icons.location_city_rounded),
           leading: Icon(Icons.wb_sunny_outlined),
           title: Text("Minha Cidade"),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/tela_home');
+          },
         ),
         ListTile(
           trailing: Icon(Icons.masks_outlined),
           leading: Icon(Icons.wb_sunny_outlined),
           title: Text("Cuidados"),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/cuidados');
+          },
         ),
         ListTile(
           trailing: Icon(Icons.speed_outlined),
           leading: Icon(Icons.wb_sunny_outlined),
           title: Text("AQI"),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/aqi_tabela');
+          },
         ),
         ListTile(
           trailing: Icon(Icons.help_outline_rounded),
           leading: Icon(Icons.wb_sunny_outlined),
           title: Text("Sobre"),
-          onTap: () {},
+          onTap: () {
+            Navigator.pushNamed(context, '/sobre');
+          },
         ),
       ],
     ),

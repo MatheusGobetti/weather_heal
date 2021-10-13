@@ -82,7 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                           onPressed: () {
                             if (email == 'matheusgobetti12@gmail.com' &&
                                 password == '123') {
-                              print('Correto');
+                              Navigator.pushNamed(context, '/tela_home');
                             } else {
                               print('Login Invalido');
                             }

@@ -172,7 +172,7 @@ class TelaTabela extends StatelessWidget {
             ],
           ),
         ),
-        drawer: drawerWidget(),
+        drawer: drawerWidget(context),
       ),
     );
   }

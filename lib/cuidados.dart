@@ -221,7 +221,7 @@ class TelaCuidados extends StatelessWidget {
             ],
           ),
         ),
-        drawer: drawerWidget(),
+        drawer: drawerWidget(context),
       ),
     );
   }

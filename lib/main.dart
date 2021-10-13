@@ -4,6 +4,7 @@ import 'package:weather_heal/cuidados.dart';
 import 'package:weather_heal/login_page.dart';
 import 'package:weather_heal/tela_home.dart';
 import 'package:weather_heal/sobre.dart';
+import 'package:weather_heal/drawer_widget.dart';
 
 import 'tela_home.dart';
 
@@ -12,8 +13,14 @@ void main() {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Navegação',
-      // TEMAS
-      home: TelaTabela(),
+      initialRoute: '/login_page',
+      routes: {
+        '/login_page': (context) => LoginPage(),
+        '/tela_home': (context) => TelaHome(),
+        '/cuidados': (context) => TelaCuidados(),
+        '/aqi_tabela': (context) => TelaTabela(),
+        '/sobre': (context) => TelaSobre(),
+      },
     ),
   );
 }
