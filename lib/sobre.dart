@@ -8,7 +8,14 @@ class TelaSobre extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Scaffold(
+      backgroundColor: Colors.orange.shade50,
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.pop(context);
+          },
+          icon: Icon(Icons.arrow_back),
+        ),
         backgroundColor: Colors.orange,
         title: Text("Sobre"),
       ),
@@ -17,23 +24,27 @@ class TelaSobre extends StatelessWidget {
           width: double.infinity,
           padding: EdgeInsets.all(15),
           child: RichText(
+            textAlign: TextAlign.center,
             text: TextSpan(children: <TextSpan>[
               TextSpan(
                   text: 'Descrição: ',
-                  style: TextStyle(color: Colors.black, fontSize: 24))
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 24,
+                  ))
             ]),
           ),
         ),
         Container(
           width: double.infinity,
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: RichText(
             text: TextSpan(children: <TextSpan>[
               TextSpan(
                   text: 'Este App foi construído com o objetivo de fornecer informações sobre ' +
                       'o índice de poluição do ar (AQI). É possível consultar através da tabela ' +
                       'em que nível de poluição sua localização se encontra.',
-                  style: TextStyle(color: Colors.deepOrange[900], fontSize: 20))
+                  style: TextStyle(color: Colors.deepOrange[900], fontSize: 16))
             ]),
           ),
         ),
@@ -52,7 +63,7 @@ class TelaSobre extends StatelessWidget {
         ),
         Container(
           width: double.infinity,
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Center(
             child: RichText(
               text: TextSpan(children: <TextSpan>[
@@ -79,7 +90,7 @@ class TelaSobre extends StatelessWidget {
         ),
         Container(
           width: double.infinity,
-          padding: EdgeInsets.all(15),
+          padding: EdgeInsets.fromLTRB(20, 0, 20, 20),
           child: Center(
             child: RichText(
               text: TextSpan(children: <TextSpan>[
@@ -91,10 +102,16 @@ class TelaSobre extends StatelessWidget {
             ),
           ),
         ),
-        Image.asset(
-          'lib/imagens/matheus-metro.jpg',
-          width: 200,
-          height: 200,
+        Padding(
+          padding: const EdgeInsets.fromLTRB(100, 0, 100, 0),
+          child: ClipOval(
+            child: Image.asset(
+              'lib/imagens/matheus-metro.jpg',
+              width: 200,
+              height: 200,
+              fit: BoxFit.cover,
+            ),
+          ),
         )
       ]),
       drawer: drawerWidget(context),

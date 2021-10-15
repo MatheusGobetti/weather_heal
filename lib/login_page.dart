@@ -14,6 +14,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.orange.shade50,
       body: Center(
         child: SingleChildScrollView(
           child: Center(
@@ -80,8 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                               primary: Colors.orange,
                               side: BorderSide(color: Colors.orange)),
                           onPressed: () {
-                            if (email == 'matheusgobetti12@gmail.com' &&
-                                password == '123') {
+                            if (email == 'admin' && password == '123') {
                               Navigator.pushNamed(context, '/tela_home');
                             } else {
                               print('Login Invalido');

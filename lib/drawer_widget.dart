@@ -21,7 +21,7 @@ Widget drawerWidget(context) {
           leading: Icon(Icons.wb_sunny_outlined),
           title: Text("Minha Cidade"),
           onTap: () {
-            Navigator.pushNamed(context, '/tela_home');
+            Navigator.pop(context);
           },
         ),
         ListTile(
@@ -38,6 +38,14 @@ Widget drawerWidget(context) {
           title: Text("AQI"),
           onTap: () {
             Navigator.pushNamed(context, '/aqi_tabela');
+          },
+        ),
+        ListTile(
+          trailing: Icon(Icons.place_outlined),
+          leading: Icon(Icons.wb_sunny_outlined),
+          title: Text("Regiões"),
+          onTap: () {
+            Navigator.pushNamed(context, '/regioes');
           },
         ),
         ListTile(

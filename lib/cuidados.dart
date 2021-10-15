@@ -9,7 +9,14 @@ class TelaCuidados extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.orange.shade50,
         appBar: AppBar(
+          leading: IconButton(
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            icon: Icon(Icons.arrow_back),
+          ),
           backgroundColor: Colors.orange,
           title: Text('Cuidados'),
         ),
@@ -221,7 +228,6 @@ class TelaCuidados extends StatelessWidget {
             ],
           ),
         ),
-        drawer: drawerWidget(context),
       ),
     );
   }
