@@ -75,23 +75,41 @@ class _LoginPageState extends State<LoginPage> {
                         SizedBox(
                           height: 15,
                         ),
-                        OutlinedButton(
-                          style: OutlinedButton.styleFrom(
-                              fixedSize: Size(180, 60),
-                              primary: Colors.orange,
-                              side: BorderSide(color: Colors.orange)),
-                          onPressed: () {
-                            if (email == 'admin' && password == '123') {
-                              Navigator.pushNamed(context, '/tela_home');
-                            } else {
-                              print('Login Invalido');
-                            }
-                          },
-                          child: Text(
-                            'Entrar',
-                            style: TextStyle(fontSize: 20),
-                          ),
-                        )
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                  fixedSize: Size(180, 60),
+                                  primary: Colors.orange,
+                                  side: BorderSide(color: Colors.orange)),
+                              onPressed: () {
+                                if (email == 'admin' && password == '123') {
+                                  Navigator.pushNamed(context, '/tela_home');
+                                } else {
+                                  print('Login Invalido');
+                                }
+                              },
+                              child: Text(
+                                'Entrar',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                            OutlinedButton(
+                              style: OutlinedButton.styleFrom(
+                                  fixedSize: Size(180, 60),
+                                  primary: Colors.orange,
+                                  side: BorderSide(color: Colors.orange)),
+                              onPressed: () {
+                                Navigator.pushNamed(context, '/criar_conta');
+                              },
+                              child: Text(
+                                'Criar Conta',
+                                style: TextStyle(fontSize: 20),
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
@@ -103,4 +121,7 @@ class _LoginPageState extends State<LoginPage> {
       ),
     );
   }
+
+  // Login com Firebase Auth
+  void login(email, senha) {}
 }
