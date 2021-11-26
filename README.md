@@ -1,16 +1,21 @@
-# weather_heal
+# Weather Heal
 
-A new Flutter project.
+Weather Heal é um aplicativo que monitora dados de uma API pública referente ao índice de poluição no ar em determinadas regiões.
 
-## Getting Started
+## Funcionamento
 
-This project is a starting point for a Flutter application.
+Você pode checar o funcionamento do aplicativo [Neste Link](https://youtu.be/XZis8SGiRAE).
 
-A few resources to get you started if this is your first Flutter project:
+## Features
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+- Autenticação de usuários
+- Cadastro de usuários
+- Componentes do Ar em determinadas regiões
+- Índice de poluição em determinadas regiões
+- Recomendações de saúde com relação à poluição do ar
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Tecnologias utilizadas
+
+- Flutter 
+- Firebase Auth
+- Firebase Cloud Storage
