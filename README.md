@@ -4,7 +4,7 @@ Weather Heal é um aplicativo que monitora dados de uma API pública referente a
 
 ## Funcionamento
 
-Você pode checar o funcionamento do aplicativo [Neste Link](https://youtu.be/XZis8SGiRAE).
+Você pode checar o funcionamento do aplicativo [Neste Link](https://youtu.be/XZis8SGiRAE){:target="_blank"}
 
 ## Features
 
