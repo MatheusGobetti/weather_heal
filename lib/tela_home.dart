@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_heal/drawer_widget.dart';
 import 'package:weather_heal/snackbar_regiao.dart';
@@ -17,6 +18,21 @@ class _TelaHomeState extends State<TelaHome> {
       appBar: AppBar(
         backgroundColor: Colors.orange,
         title: Text("Menu"),
+        actions: [
+          IconButton(
+            icon: Icon(Icons.info_outline_rounded),
+            onPressed: () async {
+              Navigator.pushNamed(context, '/sobre');
+            },
+          ),
+          IconButton(
+            icon: Icon(Icons.logout_outlined),
+            onPressed: () async {
+              FirebaseAuth.instance.signOut();
+              Navigator.pushReplacementNamed(context, '/login_page');
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Column(
