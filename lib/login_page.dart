@@ -1,4 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -8,8 +10,8 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  String email = '';
-  String password = '';
+  var txtEmail = TextEditingController();
+  var txtSenha = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +36,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextField(
-                          onChanged: (text) {
-                            email = text;
-                          },
+                          controller: txtEmail,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                               labelStyle:
@@ -55,9 +55,7 @@ class _LoginPageState extends State<LoginPage> {
                           height: 10,
                         ),
                         TextField(
-                          onChanged: (text) {
-                            password = text;
-                          },
+                          controller: txtSenha,
                           obscureText: true,
                           decoration: InputDecoration(
                               labelStyle:
@@ -84,11 +82,7 @@ class _LoginPageState extends State<LoginPage> {
                                   primary: Colors.orange,
                                   side: BorderSide(color: Colors.orange)),
                               onPressed: () {
-                                if (email == 'admin' && password == '123') {
-                                  Navigator.pushNamed(context, '/tela_home');
-                                } else {
-                                  print('Login Invalido');
-                                }
+                                login(txtEmail.text, txtSenha.text);
                               },
                               child: Text(
                                 'Entrar',
@@ -123,5 +117,30 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   // Login com Firebase Auth
-  void login(email, senha) {}
+  Future<void> login(email, senha) async {
+    try {
+      await FirebaseAuth.instance
+          .signInWithEmailAndPassword(email: email, password: senha)
+          .then((value) {
+        Navigator.pushReplacementNamed(context, '/tela_home');
+      });
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'invalid-email') {
+        exibirMensagem('ERRO: Email inválido');
+      } else if (e.code == 'wrong-password') {
+        exibirMensagem('ERRO: Senha incorreta');
+      } else {
+        exibirMensagem('ERRO: ${e.message}.');
+      }
+    }
+  }
+
+  void exibirMensagem(msg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        duration: Duration(seconds: 2),
+      ),
+    );
+  }
 }
