@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -38,10 +39,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         TextField(
-                          onChanged: (text) {
-                            controller:
-                            txtNome;
-                          },
+                          controller: txtNome,
                           keyboardType: TextInputType.name,
                           decoration: InputDecoration(
                               labelStyle:
@@ -63,10 +61,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                           inputFormatters: [
                             LengthLimitingTextInputFormatter(11),
                           ],
-                          onChanged: (text) {
-                            controller:
-                            txtCpf;
-                          },
+                          controller: txtCpf,
                           keyboardType: TextInputType.number,
                           decoration: InputDecoration(
                               labelStyle:
@@ -85,10 +80,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                           height: 10,
                         ),
                         TextField(
-                          onChanged: (text) {
-                            controller:
-                            txtTelefone;
-                          },
+                          controller: txtTelefone,
                           keyboardType: TextInputType.phone,
                           decoration: InputDecoration(
                               labelStyle:
@@ -107,10 +99,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                           height: 10,
                         ),
                         TextField(
-                          onChanged: (text) {
-                            controller:
-                            txtEmail;
-                          },
+                          controller: txtEmail,
                           keyboardType: TextInputType.emailAddress,
                           decoration: InputDecoration(
                               labelStyle:
@@ -129,10 +118,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                           height: 10,
                         ),
                         TextField(
-                          onChanged: (text) {
-                            controller:
-                            txtSenha;
-                          },
+                          controller: txtSenha,
                           obscureText: true,
                           decoration: InputDecoration(
                               labelStyle:
@@ -156,7 +142,13 @@ class _CriarContaPageState extends State<CriarContaPage> {
                               primary: Colors.orange,
                               side: BorderSide(color: Colors.orange)),
                           onPressed: () {
-                            Navigator.pushNamed(context, '/tela_home');
+                            criarConta(
+                              txtNome.text,
+                              txtCpf.text,
+                              txtTelefone.text,
+                              txtEmail.text,
+                              txtSenha.text,
+                            );
                           },
                           child: Text(
                             'Criar Conta',
@@ -173,5 +165,29 @@ class _CriarContaPageState extends State<CriarContaPage> {
         ),
       ),
     );
+  }
+
+  void criarConta(nome, cpf, telefone, email, senha) {
+    FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: senha)
+        .then((value) {
+      exibirMensagem('Usuário criado com sucesso!');
+      Navigator.pop(context);
+    }).catchError((erro) {
+      if (erro.code == 'email-already-in-use') {
+        exibirMensagem('ERRO: O email informado está em uso.');
+      } else if (erro.code == 'invalid-email') {
+        exibirMensagem('ERRO: Email inválido.');
+      } else {
+        exibirMensagem('ERRO: ${erro.message}');
+      }
+    });
+  }
+
+  void exibirMensagem(msg) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      content: Text(msg),
+      duration: Duration(seconds: 2),
+    ));
   }
 }
