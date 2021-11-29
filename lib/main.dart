@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_heal/aqi_tabela.dart';
 import 'package:weather_heal/criar_conta.dart';
+import 'package:weather_heal/crud_regioes.dart';
 import 'package:weather_heal/cuidados.dart';
 import 'package:weather_heal/login_page.dart';
 import 'package:weather_heal/regioes.dart';
@@ -28,6 +29,7 @@ Future<void> main() async {
         '/regioes': (context) => TelaRegioes(),
         '/aqi_tabela': (context) => TelaTabela(),
         '/sobre': (context) => TelaSobre(),
+        '/crud_regioes': (context) => TelaCrudRegioes(),
       },
     ),
   );
