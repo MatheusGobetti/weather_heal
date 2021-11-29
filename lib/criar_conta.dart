@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -142,6 +143,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                               primary: Colors.orange,
                               side: BorderSide(color: Colors.orange)),
                           onPressed: () {
+                            // Execução da Autenticação
                             criarConta(
                               txtNome.text,
                               txtCpf.text,
@@ -149,6 +151,14 @@ class _CriarContaPageState extends State<CriarContaPage> {
                               txtEmail.text,
                               txtSenha.text,
                             );
+                            // Execução de adicionar um novo documento
+                            FirebaseFirestore.instance
+                                .collection('usuarios')
+                                .add({
+                              'nome': txtNome.text,
+                              'cpf': txtCpf.text,
+                              'telefone': txtTelefone.text
+                            });
                           },
                           child: Text(
                             'Criar Conta',
