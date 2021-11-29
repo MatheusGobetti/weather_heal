@@ -13,6 +13,7 @@ class TelaRegioes extends StatefulWidget {
 }
 
 class _TelaRegioesState extends State<TelaRegioes> {
+  String regiaoInicial = '';
   late CollectionReference regioes;
 
   @override
@@ -41,6 +42,7 @@ class _TelaRegioesState extends State<TelaRegioes> {
           onChanged: (String? value) {
             setState(() {
               regiao = value;
+              regiaoInicial = regiao!;
             });
           }),
       trailing: IconButton(
