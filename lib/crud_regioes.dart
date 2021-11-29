@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:weather_heal/drawer_widget.dart';
-import 'package:weather_heal/regioes.dart';
 
 class TelaCrudRegioes extends StatefulWidget {
   const TelaCrudRegioes({Key? key}) : super(key: key);
@@ -75,7 +74,7 @@ class _TelaCrudRegioesState extends State<TelaCrudRegioes> {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    icon: Icon(Icons.keyboard_return)),
+                    icon: Icon(Icons.keyboard_backspace)),
                 IconButton(
                   color: Colors.orange,
                   onPressed: () {
