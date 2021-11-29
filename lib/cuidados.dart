@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
-import 'package:weather_heal/drawer_widget.dart';
 
 class TelaCuidados extends StatelessWidget {
   const TelaCuidados({Key? key}) : super(key: key);
